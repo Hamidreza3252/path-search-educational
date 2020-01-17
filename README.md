@@ -19,8 +19,10 @@ The pipeline consists of two main classes `RouteNode` and `RouteFinder`.
     - `directions`: the same matrix as `delta_names`, but it contains the final direction arrows, extracted from the `delta_names` based on the search approach 
     - `count_table`: an integer matrix, with the same size as the `grid_cells`, containing the number of pipeline iteration while exploring each cell 
     - `search_counter`: a cumulative integer counter, keeping the cumulative number of pipeline iteration while exploring each cell 
+    - `cost_table`: the table that includes the cost of a path from each node of a grid to the specified goal node 
         
   - **Main Functions**: 
-    - `extract_path_indices`: to summarize and extract the final output out of the search method selected 
+    - `extract_path_info`: to summarize and extract the final output out of the search method selected 
     - `search_basic`: the basic search algorithm to find a path between two points on the map. As long as a path exists between two cells, this fucntion finds an existing path anyway, but it is not the most efficient way. 
-    - `search_a_star`: the A*-based search algorithm to find a path between two points on the map.
+    - `search_basic_with_booking`: this method is the same as `search_basic` explained above, but it also bookkeeps the neighbors for cost table calculations with higher performance. 
+    - `search_a_star`: the A*-based search algorithm to find a path between two points on the map. 
